@@ -389,7 +389,7 @@ Los usuarios pueden crear cuentas nuevas mediante el formulario de registro.
 **Institución:** Universidad Popular del Cesar  
 **Curso:** Programación III  
 **Profesor:** John Patiño  
-**Período Académico:** 2024-2
+**Período Académico:** 2025-2
 
 ### Equipo de Desarrollo
 
@@ -412,10 +412,10 @@ Este proyecto fue desarrollado con fines académicos y educativos.
 
 ## Referencias
 
-- Anthropic. (2024). Claude AI API Documentation. https://docs.anthropic.com
-- Microsoft. (2024). Azure OpenAI Service Documentation. https://learn.microsoft.com/azure/ai-services/openai/
-- Microsoft. (2024). Windows Presentation Foundation Documentation. https://learn.microsoft.com/dotnet/desktop/wpf/
-- NAudio. (2024). Audio and MIDI library for .NET. https://github.com/naudio/NAudio
+- Anthropic. (2025). Claude AI API Documentation. https://docs.anthropic.com
+- Microsoft. (2025). Azure OpenAI Service Documentation. https://learn.microsoft.com/azure/ai-services/openai/
+- Microsoft. (2025). Windows Presentation Foundation Documentation. https://learn.microsoft.com/dotnet/desktop/wpf/
+- NAudio. (2025). Audio and MIDI library for .NET. https://github.com/naudio/NAudio
 
 ---
 
