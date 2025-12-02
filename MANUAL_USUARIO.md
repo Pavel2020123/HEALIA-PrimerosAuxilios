@@ -405,5 +405,5 @@ Utilice el sistema de manera responsable y siempre priorice la atención médica
 ---
 
 **Versión del Manual:** 1.0  
-**Fecha:** Diciembre 2024  
+**Fecha:** Diciembre 2025  
 **Sistema:** HEALIA - Primeros Auxilios con IA
