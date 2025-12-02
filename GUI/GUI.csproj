@@ -1,0 +1,204 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <None Remove="Assets\AC_01.png" />
+    <None Remove="Assets\AC_02.png" />
+    <None Remove="Assets\AC_03.png" />
+    <None Remove="Assets\AT_04.png" />
+    <None Remove="Assets\A_01.png" />
+    <None Remove="Assets\A_02.png" />
+    <None Remove="Assets\A_03.png" />
+    <None Remove="Assets\bot-de-chat.png" />
+    <None Remove="Assets\bot-de-chat2.png" />
+    <None Remove="Assets\boton-de-encendido-apagado.png" />
+    <None Remove="Assets\CambiarContraseña.png" />
+    <None Remove="Assets\cambio.png" />
+    <None Remove="Assets\cerrar-sesion.png" />
+    <None Remove="Assets\CL_01.png" />
+    <None Remove="Assets\CT_03.png" />
+    <None Remove="Assets\C_01.png" />
+    <None Remove="Assets\C_02.png" />
+    <None Remove="Assets\C_03.png" />
+    <None Remove="Assets\DT_01.png" />
+    <None Remove="Assets\D_01.png" />
+    <None Remove="Assets\D_02.png" />
+    <None Remove="Assets\D_03.png" />
+    <None Remove="Assets\equipo-de-usuario.png" />
+    <None Remove="Assets\H.png" />
+    <None Remove="Assets\historial-medico.png" />
+    <None Remove="Assets\IND_1.png" />
+    <None Remove="Assets\I_01.png" />
+    <None Remove="Assets\I_02.png" />
+    <None Remove="Assets\I_03.png" />
+    <None Remove="Assets\Logo.png" />
+    <None Remove="Assets\L_01.png" />
+    <None Remove="Assets\Map_S3.png" />
+    <None Remove="Assets\maximizar-ventana.png" />
+    <None Remove="Assets\menu.png" />
+    <None Remove="Assets\minimizar-ventana.png" />
+    <None Remove="Assets\MN_01.png" />
+    <None Remove="Assets\MT_02.png" />
+    <None Remove="Assets\MX_01.png" />
+    <None Remove="Assets\M_01.png" />
+    <None Remove="Assets\M_02.png" />
+    <None Remove="Assets\M_03.png" />
+    <None Remove="Assets\NOT_01.png" />
+    <None Remove="Assets\punta-de-flecha-hacia-arriba - copia.png" />
+    <None Remove="Assets\punta-de-flecha-hacia-arribanuevoooo.png" />
+    <None Remove="Assets\puntas-de-flecha-de-contorno-delgado-a-la-izquierda.png" />
+    <None Remove="Assets\PWD_01.png" />
+    <None Remove="Assets\P_01.png" />
+    <None Remove="Assets\P_02.png" />
+    <None Remove="Assets\P_03.png" />
+    <None Remove="Assets\RS_01.png" />
+    <None Remove="Assets\R_01.png" />
+    <None Remove="Assets\simbolo-de-doble-flecha-derecha-de-avance-rapido.png" />
+    <None Remove="Assets\SL_01.png" />
+    <None Remove="Assets\SL_02.png" />
+    <None Remove="Assets\SL_03.png" />
+    <None Remove="Assets\SMO_1.png" />
+    <None Remove="Assets\SMO_2.png" />
+    <None Remove="Assets\SMT_1.png" />
+    <None Remove="Assets\SMT_2.png" />
+    <None Remove="Assets\ST_01.png" />
+    <None Remove="Assets\ST_02.png" />
+    <None Remove="Assets\ST_03.png" />
+    <None Remove="Assets\ST_05.png" />
+    <None Remove="Assets\S_01.png" />
+    <None Remove="Assets\S_02.png" />
+    <None Remove="Assets\S_03.png" />
+    <None Remove="Assets\up22.png" />
+    <None Remove="Assets\usuario.png" />
+    <None Remove="Assets\U_01.png" />
+    <None Remove="Assets\ventana.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DesignDataWithDesignTimeCreatableTypes Include="Assets\SL_01.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.AI.OpenAI" Version="2.5.0-beta.1" />
+    <PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3650-prerelease" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="SendGrid" Version="9.29.3" />
+    <PackageReference Include="System.Device.Location.Portable" Version="1.0.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Text.Json" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PrimerosAuxilios.BLL\PrimerosAuxilios.BLL.csproj" />
+    <ProjectReference Include="..\PrimerosAuxilios.Entity\PrimerosAuxilios.Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\AC_01.png" />
+    <Resource Include="Assets\AC_02.png" />
+    <Resource Include="Assets\AC_03.png" />
+    <Resource Include="Assets\AT_04.png" />
+    <Resource Include="Assets\A_01.png" />
+    <Resource Include="Assets\A_02.png" />
+    <Resource Include="Assets\A_03.png" />
+    <Resource Include="Assets\bot-de-chat2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\boton-de-encendido-apagado.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\CambiarContraseña.png" />
+    <Resource Include="Assets\cambio.png" />
+    <Resource Include="Assets\cerrar-sesion.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\CT_03.png" />
+    <Resource Include="Assets\C_01.png" />
+    <Resource Include="Assets\C_02.png" />
+    <Resource Include="Assets\C_03.png" />
+    <Resource Include="Assets\DT_01.png" />
+    <Resource Include="Assets\D_01.png" />
+    <Resource Include="Assets\D_02.png" />
+    <Resource Include="Assets\D_03.png" />
+    <Resource Include="Assets\equipo-de-usuario.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\H.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\historial-medico.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\IND_1.png" />
+    <Resource Include="Assets\I_01.png" />
+    <Resource Include="Assets\I_02.png" />
+    <Resource Include="Assets\I_03.png" />
+    <Resource Include="Assets\Logo.png" />
+    <Resource Include="Assets\L_01.png" />
+    <Resource Include="Assets\Map_S3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\maximizar-ventana.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\MN_01.png" />
+    <Resource Include="Assets\MT_02.png" />
+    <Resource Include="Assets\M_01.png" />
+    <Resource Include="Assets\M_02.png" />
+    <Resource Include="Assets\M_03.png" />
+    <Resource Include="Assets\NOT_01.png" />
+    <Resource Include="Assets\punta-de-flecha-hacia-arriba - copia.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\punta-de-flecha-hacia-arribanuevoooo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\puntas-de-flecha-de-contorno-delgado-a-la-izquierda.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\PWD_01.png" />
+    <Resource Include="Assets\P_01.png" />
+    <Resource Include="Assets\P_02.png" />
+    <Resource Include="Assets\P_03.png" />
+    <Resource Include="Assets\RS_01.png" />
+    <Resource Include="Assets\R_01.png" />
+    <Resource Include="Assets\simbolo-de-doble-flecha-derecha-de-avance-rapido.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\SL_02.png" />
+    <Resource Include="Assets\SL_03.png" />
+    <Resource Include="Assets\SMO_1.png" />
+    <Resource Include="Assets\SMO_2.png" />
+    <Resource Include="Assets\SMT_1.png" />
+    <Resource Include="Assets\SMT_2.png" />
+    <Resource Include="Assets\ST_01.png" />
+    <Resource Include="Assets\ST_02.png" />
+    <Resource Include="Assets\ST_03.png" />
+    <Resource Include="Assets\ST_05.png" />
+    <Resource Include="Assets\S_01.png" />
+    <Resource Include="Assets\S_02.png" />
+    <Resource Include="Assets\S_03.png" />
+    <Resource Include="Assets\up22.png" />
+    <Resource Include="Assets\usuario.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\U_01.png" />
+    <Resource Include="Assets\ventana.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,449 @@
+﻿<UserControl x:Class="GUI.SidePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" 
+             d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <!--// SidePanel Toggle Button Style //-->
+        <Style x:Key="SidePanelStyle"
+            TargetType="ToggleButton">
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+
+                        <Border x:Name="border"
+                             Height="40"
+                             Background="#BBDEFB">
+
+                            <Grid>
+
+                                <Image x:Name="SidePanel_Menu_Image"
+                                    Source="{TemplateBinding Image.Source}"
+                                    Stretch="None"
+                                    Margin="0,5,12,5"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center" />
+
+                                <Grid x:Name="TextBlock_Panel"
+                                   Background="Transparent"
+                                   Height="35"
+                                   Width="150"
+                                   Margin="0,0,50,0"
+                                   HorizontalAlignment="Right">
+
+                                    <TextBlock Text="{TemplateBinding TextBlock.Text}"
+                                            FontFamily="{StaticResource FontStyle_2}"
+                                            FontSize="17"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"
+                                            Margin="10,0,0,0"
+                                            Foreground="#1976D2" />
+                                </Grid>
+
+                                <Grid x:Name="Sliding_UpperCase_Panel"
+                                   Height="40"
+                                   Width="0"
+                                   Background="#BBDEFB"
+                                   HorizontalAlignment="Left"
+                                   Margin="0,0,0,0">
+
+                                    <TextBlock x:Name="UpperCase_Text"
+                                            Text="{Binding Content, 
+                                                           RelativeSource={RelativeSource FindAncestor,
+                                                           AncestorType={x:Type ToggleButton}}}"
+                                            FontFamily="{StaticResource FontStyle_2}"
+                                            FontSize="17"
+                                            Foreground="#1976D2"
+                                            Margin="20,0,0,0"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center">
+
+                                    </TextBlock>
+
+                                    <Border x:Name="Highlighter"
+                                         Height="30"
+                                         Width="3"
+                                         Background="#2196F3"
+                                         CornerRadius="1"
+                                         HorizontalAlignment="Right"
+                                         Margin="0,0,5,0" />
+
+                                </Grid>
+                            </Grid>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="ToggleButton.IsMouseOver"
+                                  Value="true">
+
+                                <Setter Property="Background"
+                                     TargetName="border"
+                                     Value="#90CAF9" />
+
+                                <Setter TargetName="SidePanel_Menu_Image"
+                                     Property="Source"
+                                     Value="{Binding Tag, 
+                                                     RelativeSource={RelativeSource FindAncestor,
+                                                     AncestorType={x:Type ToggleButton}}}" />
+
+                            </Trigger>
+
+                            <Trigger Property="ToggleButton.IsChecked"
+                                  Value="true">
+
+                                <Setter Property="Background"
+                                     TargetName="border"
+                                     Value="#90CAF9" />
+
+                                <Setter Property="Background"
+                                     TargetName="Highlighter"
+                                     Value="#FFFFFF" />
+
+                                <Setter Property="Foreground"
+                                     TargetName="UpperCase_Text"
+                                     Value="#2196F3" />
+
+                                <Setter Property="FontSize"
+                                     TargetName="UpperCase_Text"
+                                     Value="17" />
+
+                                <Setter TargetName="SidePanel_Menu_Image"
+                                     Property="Source"
+                                     Value="{Binding DataContext, 
+                                                     RelativeSource={RelativeSource FindAncestor,
+                                                     AncestorType={x:Type ToggleButton}}}" />
+
+                            </Trigger>
+
+                            <MultiTrigger>
+
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="ToggleButton.IsMouseOver"
+                                            Value="True" />
+                                </MultiTrigger.Conditions>
+
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard x:Name="Start_Uppercase_Indicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Sliding_UpperCase_Panel"
+                                                          Storyboard.TargetProperty="Width"
+                                                          DecelerationRatio="0.6"
+                                                          From="0"
+                                                          To="160"
+                                                          Duration="0:0:1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                    <RemoveStoryboard BeginStoryboardName="Stop_Indicator" />
+                                </MultiTrigger.EnterActions>
+
+                                <MultiTrigger.ExitActions>
+                                    <BeginStoryboard x:Name="Stop_Uppercase_Indicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Sliding_UpperCase_Panel"
+                                                          Storyboard.TargetProperty="Width"
+                                                          DecelerationRatio="0.6"
+                                                          From="160"
+                                                          To="0"
+                                                          Duration="0:0:1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                    <RemoveStoryboard BeginStoryboardName="Release_Indicator" />
+                                </MultiTrigger.ExitActions>
+
+                            </MultiTrigger>
+
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+
+                                    <Condition Property="ToggleButton.IsChecked"
+                                            Value="True" />
+
+                                </MultiTrigger.Conditions>
+
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard x:Name="Lock_Indicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Sliding_UpperCase_Panel"
+                                                          Storyboard.TargetProperty="Width"
+                                                          From="160"
+                                                          To="165"
+                                                          Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+
+                                <MultiTrigger.ExitActions>
+                                    <BeginStoryboard x:Name="Release_Indicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Sliding_UpperCase_Panel"
+                                                          Storyboard.TargetProperty="Width"
+                                                          From="165"
+                                                          To="160"
+                                                          Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                    <BeginStoryboard x:Name="Stop_Indicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Sliding_UpperCase_Panel"
+                                                          Storyboard.TargetProperty="Width"
+                                                          From="160"
+                                                          To="0"
+                                                          BeginTime="0:0:0.5"
+                                                          Duration="0:0:1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.ExitActions>
+
+                            </MultiTrigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SidePanelListBoxStyle"
+            TargetType="{x:Type ListBox}">
+
+            <Setter Property="VerticalAlignment"
+                 Value="Top" />
+
+            <Setter Property="SelectionMode"
+                 Value="Single" />
+
+            <Setter Property="Cursor"
+                 Value="Hand" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border>
+
+                            <ScrollViewer Focusable="False"
+                                       HorizontalScrollBarVisibility="Disabled"
+                                       VerticalScrollBarVisibility="Disabled">
+
+                                <ItemsPresenter />
+
+                            </ScrollViewer>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid>
+
+        <StackPanel>
+
+            <ListBox x:Name="SidePanel_ListBox"
+                  Style="{StaticResource SidePanelListBoxStyle}">
+
+                <ListBox.Resources>
+
+                    <!-- Dashboard/Chat en Vivo ListBoxItem Style -->
+                    <Style x:Key="dashboard_listboxitem_style" TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <ToggleButton IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <ToggleButton.Style>
+                                            <Style TargetType="ToggleButton" BasedOn="{StaticResource SidePanelStyle}">
+                                                <Setter Property="TextBlock.Text" Value="Chat en Vivo" />
+                                                <Setter Property="Content" Value="CHAT EN VIVO" />
+                                                <Setter Property="Tag" Value="{StaticResource Dashboard_S1}" />
+                                                <Setter Property="Image.Source" Value="{StaticResource Dashboard_S2}" />
+                                                <Setter Property="DataContext" Value="{StaticResource Dashboard_S3}" />
+                                            </Style>
+                                        </ToggleButton.Style>
+                                    </ToggleButton>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <!-- Historial ListBoxItem Style -->
+                    <Style x:Key="mail_listboxitem_style" TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <ToggleButton IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <ToggleButton.Style>
+                                            <Style TargetType="ToggleButton" BasedOn="{StaticResource SidePanelStyle}">
+                                                <Setter Property="TextBlock.Text" Value="Historial" />
+                                                <Setter Property="Content" Value="HISTORIAL" />
+                                                <Setter Property="Tag" Value="{StaticResource Analytics_S1}" />
+                                                <Setter Property="Image.Source" Value="{StaticResource Analytics_S2}" />
+                                                <Setter Property="DataContext" Value="{StaticResource Analytics_S3}" />
+                                            </Style>
+                                        </ToggleButton.Style>
+                                    </ToggleButton>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <!-- Mi Cuenta ListBoxItem Style -->
+                    <Style x:Key="customer_listboxitem_style" TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <ToggleButton IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <ToggleButton.Style>
+                                            <Style TargetType="ToggleButton" BasedOn="{StaticResource SidePanelStyle}">
+                                                <Setter Property="TextBlock.Text" Value="Mi Cuenta" />
+                                                <Setter Property="Content" Value="MI CUENTA" />
+                                                <Setter Property="Tag" Value="{StaticResource Customer_S1}" />
+                                                <Setter Property="Image.Source" Value="{StaticResource Customer_S2}" />
+                                                <Setter Property="DataContext" Value="{StaticResource Customer_S3}" />
+                                            </Style>
+                                        </ToggleButton.Style>
+                                    </ToggleButton>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <!-- ⭐ Mapa ListBoxItem Style (CORREGIDO) -->
+                    <Style x:Key="map_listboxitem_style" TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <ToggleButton IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource TemplatedParent}}">
+                                        <ToggleButton.Style>
+                                            <Style TargetType="ToggleButton" BasedOn="{StaticResource SidePanelStyle}">
+                                                <Setter Property="TextBlock.Text" Value="Hospitales" />
+                                                <Setter Property="Content" Value="HOSPITALES" />
+                                                <!-- ✅ Usa recursos que ya existen (Analytics) como placeholder -->
+                                                <Setter Property="Tag" Value="{StaticResource Analytics_S1}" />
+                                                <Setter Property="Image.Source" Value="{StaticResource Analytics_S2}" />
+                                                <Setter Property="DataContext" Value="{StaticResource Analytics_S3}" />
+                                            </Style>
+                                        </ToggleButton.Style>
+                                    </ToggleButton>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.Resources>
+
+                <ListBox.ItemsPanel>
+
+                    <ItemsPanelTemplate>
+
+                        <Grid HorizontalAlignment="Right">
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="210" />
+                                <ColumnDefinition Width="50" />
+
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+
+                            </Grid.RowDefinitions>
+
+                        </Grid>
+
+                    </ItemsPanelTemplate>
+
+                </ListBox.ItemsPanel>
+
+                <ListBoxItem x:Name="dashboard_sidepanel_listboxitem"
+                             Grid.Row="0"
+                             Grid.Column="0"
+                             Style="{StaticResource dashboard_listboxitem_style}"
+                             Selected="dashboard_sidepanel_listboxitem_Selected" />
+
+                <ListBoxItem x:Name="mail_sidepanel_listboxitem"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Style="{StaticResource mail_listboxitem_style}"
+                             Selected="mail_sidepanel_listboxitem_Selected"
+                             Unselected="mail_sidepanel_listboxitem_Unselected" />
+
+                <ListBoxItem x:Name="customer_sidepanel_listboxitem"
+                             Grid.Row="2"
+                             Grid.Column="0"
+                             Style="{StaticResource customer_listboxitem_style}"
+                             Selected="customer_sidepanel_listboxitem_Selected"
+                             Unselected="customer_sidepanel_listboxitem_Unselected"/>
+
+                <!-- ⭐ MAPA (NUEVO) -->
+                <ListBoxItem x:Name="map_sidepanel_listboxitem"
+                             Grid.Row="3"
+                             Grid.Column="0"
+                             Style="{StaticResource map_listboxitem_style}"
+                             Selected="map_sidepanel_listboxitem_Selected"
+                             Unselected="map_sidepanel_listboxitem_Unselected"/>
+
+                <ListBoxItem Grid.Row="1"
+                          Grid.Column="1"
+                          IsHitTestVisible="False">
+
+                    <ListBoxItem.Template>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Border>
+                                <ContentPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </ListBoxItem.Template>
+
+                    <Image x:Name="mail_submenu_indicator"
+                        Source="{StaticResource SubmenuOne_Indicator}"
+                        Stretch="None"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="12,0,0,0">
+
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Visibility"
+                Value="Hidden" />
+                                <Style.Triggers>
+
+                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName=mail_sidepanel_listboxitem}"
+                         Value="True">
+                                        <Setter Property="Visibility"
+                        Value="Visible" />
+                                    </DataTrigger>
+
+                                    <DataTrigger Binding="{Binding IsSelected, ElementName=mail_sidepanel_listboxitem}"
+                         Value="True">
+                                        <Setter Property="Visibility"
+                        Value="Visible" />
+                                    </DataTrigger>
+
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+
+                    </Image>
+
+                </ListBoxItem>
+
+            </ListBox>
+
+        </StackPanel>
+
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="GUI.MapView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" 
+             d:DesignWidth="800">
+
+    <Grid Background="White">
+        <!-- WebView2 para Google Maps -->
+        <wv2:WebView2 x:Name="MapWebView"
+                     Visibility="Collapsed"/>
+
+        <!-- Loading -->
+        <Grid x:Name="MapLoadingPanel" 
+              Background="White"
+              Visibility="Visible">
+            <StackPanel HorizontalAlignment="Center" 
+                       VerticalAlignment="Center">
+                <TextBlock Text="🗺️" 
+                          FontSize="64" 
+                          HorizontalAlignment="Center"
+                          Margin="0,0,0,16"/>
+                <TextBlock Text="Cargando mapa..."
+                          FontSize="16"
+                          Foreground="#2196F3"
+                          HorizontalAlignment="Center"
+                          FontWeight="Bold"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Error -->
+        <Grid x:Name="MapEmptyState" 
+              Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" 
+                       VerticalAlignment="Center">
+                <TextBlock Text="❌" 
+                          FontSize="64" 
+                          HorizontalAlignment="Center"
+                          Margin="0,0,0,16"/>
+                <TextBlock Text="Error cargando mapa"
+                          FontSize="16"
+                          Foreground="#F44336"
+                          HorizontalAlignment="Center"
+                          FontWeight="Bold"/>
+                <TextBlock Text="Instala WebView2 Runtime"
+                          FontSize="12"
+                          Foreground="#666"
+                          HorizontalAlignment="Center"
+                          Margin="0,8,0,0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
